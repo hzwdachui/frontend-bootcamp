@@ -28,6 +28,7 @@ export class TodoApp extends React.Component<any, any> {
       filter: 'all'
     };
   }
+
   render() {
     const { filter, todos = [] } = this.state;
     return (

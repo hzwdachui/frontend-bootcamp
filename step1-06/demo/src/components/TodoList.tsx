@@ -12,7 +12,9 @@ export class TodoList extends React.Component<any, any> {
 
     return (
       <ul className="todos">
-        {['01', '02', '03', '04'].map((id) => <TodoListItem />)}
+        {['01', '02', '03', '04'].map(id => (
+          <TodoListItem key={id} id={id} {...todos[id]} />
+        ))}
       </ul>
     );
   }

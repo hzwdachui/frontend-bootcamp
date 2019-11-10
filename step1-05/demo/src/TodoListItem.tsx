@@ -1,15 +1,11 @@
 import React from 'react';
 
 export class TodoListItem extends React.Component<any, any> {
-  constructor(props) {
-    super(props);
-  }
   render() {
-    const { label, completed } = this.props;
     return (
       <li className="todo">
         <label>
-          <input type="checkbox" checked={completed} /> {label}
+          <input type="checkbox" /> Todo 1
         </label>
       </li>
     );
