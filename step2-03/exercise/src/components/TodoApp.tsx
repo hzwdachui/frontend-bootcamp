@@ -1,20 +1,31 @@
 import React from 'react';
-import { Stack, Customizer, mergeStyles, getTheme } from 'office-ui-fabric-react';
+import { Stack, Customizer, getTheme } from 'office-ui-fabric-react';
 import { TodoFooter } from './TodoFooter';
 import { TodoHeader } from './TodoHeader';
 import { TodoList } from './TodoList';
 import { Store } from '../store';
 
 // TODO: Change me to another theme!
-import { TeamsCustomizations } from '@uifabric/theme-samples';
+// import { TeamsCustomizations } from '@uifabric/theme-samples';
+import { FluentCustomizations } from '@uifabric/fluent-theme';
+import { mergeStyles } from '@uifabric/merge-styles';
+
+const className = mergeStyles({
+  backgroundColor: 'white',
+  selectors: {
+    ':hover': {
+      backgroundColor: 'red'
+    }
+  }
+});
 
 let index = 0;
 
 // TODO: Change this to add other CSS styles like backgroundColor, fontSize, etc
-const className = mergeStyles({
-  padding: 25,
-  ...getTheme().effects.elevation4
-});
+// const className = mergeStyles({
+//   padding: 25,
+//   ...getTheme().effects.elevation4
+// });
 
 export class TodoApp extends React.Component<any, Store> {
   constructor(props) {
@@ -27,15 +38,15 @@ export class TodoApp extends React.Component<any, Store> {
   render() {
     const { filter, todos } = this.state;
     return (
-      <Customizer {...TeamsCustomizations}>
-        <Stack horizontalAlign="center">
-          <Stack style={{ width: 400 }} gap={25} className={className}>
-            <TodoHeader addTodo={this._addTodo} setFilter={this._setFilter} filter={filter} />
-            <TodoList complete={this._complete} todos={todos} filter={filter} remove={this._remove} edit={this._edit} />
-            <TodoFooter clear={this._clear} todos={todos} />
-          </Stack>
+      //<Customizer {...FluentCustomizations}>
+      <Stack horizontalAlign="center">
+        <Stack style={{ width: 400 }} gap={25} className={className}>
+          <TodoHeader addTodo={this._addTodo} setFilter={this._setFilter} filter={filter} />
+          <TodoList complete={this._complete} todos={todos} filter={filter} remove={this._remove} edit={this._edit} />
+          <TodoFooter clear={this._clear} todos={todos} />
         </Stack>
-      </Customizer>
+      </Stack>
+      //</Customizer>
     );
   }
 
